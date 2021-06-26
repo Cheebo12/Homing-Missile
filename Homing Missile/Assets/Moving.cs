@@ -18,6 +18,8 @@ public class Moving : MonoBehaviour
     public int n = 100;
     private int current=0;
     private float predictedy;
+    [SerializeField]
+    private float rotationspeed;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -29,6 +31,7 @@ public class Moving : MonoBehaviour
     void FixedUpdate()
     {   
         Vector2 direction = (Vector2)Target.position - rb.position;
+        
        for (int i = 0; i < n; i++)
        {    
         
@@ -44,6 +47,7 @@ public class Moving : MonoBehaviour
 
         // predictedy = aray[prev] + ((predictedx - arax[prev])/(arax[current]-arax[prev])*(aray[current]-aray[prev]));
 
+        direction.Normalize();
         direction.Set(arax[prev],aray[prev]);
         
         prev++;
@@ -53,13 +57,13 @@ public class Moving : MonoBehaviour
          
         float rotateAmount = Vector3.Cross(direction, transform.up).z;
         rb.angularVelocity = -rotateAmount * rotatespeed;
-        rb.velocity = transform.up* speed;
+        rb.velocity = transform.up* speed * Time.deltaTime;
         }
         flag = true;
         count++;
         current++;
        }
-        
-
+        Quaternion torotate = Quaternion.LookRotation(Vector3.forward, rb.velocity);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, torotate, rotationspeed*Time.deltaTime);
     }
 }
