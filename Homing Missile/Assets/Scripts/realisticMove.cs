@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Moving : MonoBehaviour
+public class realisticMove : MonoBehaviour
 {
-    public Transform Target;
+   
+   public Transform Target;
     private Rigidbody2D rb;
-    public float speed = 5f;
-    public float rotatespeed = 200f;
+    public float speed;
+    public float rotatespeed;
     private float[] arax;
     private float[] aray;
     private float delta;
@@ -18,11 +19,14 @@ public class Moving : MonoBehaviour
     public int n = 100;
     private int current=0;
     private float predictedy;
-    [SerializeField]
-    private float rotationspeed;
+    private int r;
     void Start()
     {
+        r = Random.Range(0,2);
+        Debug.Log(r);
         rb = GetComponent<Rigidbody2D>();
+        speed  = Random.Range(250f, 500f);
+        rotatespeed  = Random.Range(500f, 1000f);
         arax = new float[n];
         aray = new float[n];
     }
@@ -30,8 +34,12 @@ public class Moving : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {   
+       if(r==1){ 
+
+        if(Target != null){    
         Vector2 direction = (Vector2)Target.position - rb.position;
-        
+       speed  = 400f;
+        rotatespeed = 200f;
        for (int i = 0; i < n; i++)
        {    
         
@@ -63,7 +71,30 @@ public class Moving : MonoBehaviour
         count++;
         current++;
        }
+       }else{
+           rb.velocity = Vector2.zero;
+        rb.angularVelocity = 0f;
+       }
       //  Quaternion torotate = Quaternion.LookRotation(Vector3.forward, rb.velocity);
        // transform.rotation = Quaternion.RotateTowards(transform.rotation, torotate, rotationspeed*Time.deltaTime);
+    }else{
+        if(Target != null){   
+        Vector2 direction = (Vector2)Target.position - rb.position;
+
+        direction.Normalize();
+
+        float rotateamount = Vector3.Cross(direction, transform.up).z;
+
+        rb.angularVelocity = -rotateamount * rotatespeed;
+
+        rb.velocity = transform.up * speed * Time.deltaTime;
+     }else{
+        rb.velocity = Vector2.zero;
+        rb.angularVelocity = 0f;
+     }
+    }
+    
+    
+    
     }
 }

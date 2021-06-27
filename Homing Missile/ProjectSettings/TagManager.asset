@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Missile
   - spaceship
+  - target1
   layers:
   - Default
   - TransparentFX

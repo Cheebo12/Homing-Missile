@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class homing : MonoBehaviour
 {   
+    
     [SerializeField]
     private Transform target;
     [SerializeField]
@@ -15,6 +16,7 @@ public class homing : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+      
         speed  = Random.Range(250f, 500f);
         rotatespeed  = Random.Range(500f, 1000f);
         rb = GetComponent<Rigidbody2D>();
@@ -23,6 +25,7 @@ public class homing : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+     if(target != null){   
         Vector2 direction = (Vector2)target.position - rb.position;
 
         direction.Normalize();
@@ -32,5 +35,9 @@ public class homing : MonoBehaviour
         rb.angularVelocity = -rotateamount * rotatespeed;
 
         rb.velocity = transform.up * speed * Time.deltaTime;
+     }else{
+        rb.velocity = Vector2.zero;
+        rb.angularVelocity = 0f;
+     }
     }
 }
