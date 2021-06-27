@@ -18,17 +18,14 @@ public class spawnning : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {if(timer > maxtime){
-                  y = Random.Range(5.80f, 1.79f); 
-        GameObject newmissile = Instantiate(missile);
-
-        newmissile.transform.position = transform.position + new Vector3(0,y,0);
-       
-        timer = 0;
-        
-        
-       
- } timer += Time.deltaTime; 
+    {
+        if(timer > maxtime){
+            y = Random.Range(5.80f, 1.79f); 
+            GameObject newmissile = Instantiate(missile);
+            newmissile.transform.position = transform.position;
+            timer = 0;
+        } 
+ timer += Time.deltaTime; 
     }
     
     

@@ -63,7 +63,7 @@ public class Moving : MonoBehaviour
         count++;
         current++;
        }
-        Quaternion torotate = Quaternion.LookRotation(Vector3.forward, rb.velocity);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, torotate, rotationspeed*Time.deltaTime);
+      //  Quaternion torotate = Quaternion.LookRotation(Vector3.forward, rb.velocity);
+       // transform.rotation = Quaternion.RotateTowards(transform.rotation, torotate, rotationspeed*Time.deltaTime);
     }
 }

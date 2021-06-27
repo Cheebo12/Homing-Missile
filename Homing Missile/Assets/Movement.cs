@@ -8,7 +8,8 @@ public class Movement : MonoBehaviour {
     private Rigidbody2D rb;
     private Vector2 direction;
     private float moveSpeed = 100f;
-
+    [SerializeField]
+    private float rotationspeed;
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody2D>();
@@ -21,6 +22,7 @@ public class Movement : MonoBehaviour {
             direction = (mousePosition - transform.position).normalized;
             rb.velocity = new Vector2(direction.x * moveSpeed, direction.y * moveSpeed);
         
-      
+         Quaternion torotate = Quaternion.LookRotation(Vector3.forward, direction);
+         transform.rotation = Quaternion.RotateTowards(transform.rotation, torotate, rotationspeed*Time.deltaTime);
     }
 }
