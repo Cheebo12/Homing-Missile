@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class Scoring : MonoBehaviour
+public class score : MonoBehaviour
 {
     [SerializeField]
     private Transform target;
@@ -33,7 +33,7 @@ public class Scoring : MonoBehaviour
             if(target != null){
             points = Time.time-starttime;
             string textscore = points.ToString("0");
-            scoretext.text = "Score: "+textscore;
+            scoretext.text = "Time: "+textscore;
             }
         }
         
