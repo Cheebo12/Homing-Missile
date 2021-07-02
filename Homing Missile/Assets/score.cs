@@ -9,9 +9,10 @@ public class Scoring : MonoBehaviour
     [SerializeField]
     private Transform target;
     public TextMeshProUGUI scoretext;
-    float points = 0;
+    public float points = 0;
     private bool chk;
     float starttime;
+    public float ss=0;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +20,7 @@ public class Scoring : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
         if (Input.touchCount > 0)
         {
@@ -34,8 +35,13 @@ public class Scoring : MonoBehaviour
             points = Time.time-starttime;
             string textscore = points.ToString("0");
             scoretext.text = "Score: "+textscore;
+            ss = getScore(points);
             }
         }
         
+    }
+
+    public float getScore(float points){
+        return points;    
     }
 }

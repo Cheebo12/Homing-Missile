@@ -25,4 +25,8 @@ public class MenuChange : MonoBehaviour
         instruction.SetActive(false);
         mainmenu.SetActive(true);
     }
+
+    public void Quit(){
+        Application.Quit();
+    }
 }
