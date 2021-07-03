@@ -8,6 +8,8 @@ public class startt : MonoBehaviour
     public GameObject MainMenu;
     public GameObject Tappi;
     bool chk;
+    float chk2;
+    bool chk3 = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,17 +22,24 @@ public class startt : MonoBehaviour
     {
         if(chk)
         {
-            if (Input.touchCount > 0)
+            for (int i = 0; i < Input.touchCount; ++i)
+        {
+            if (Input.GetTouch(i).phase == TouchPhase.Began)
             {
-                Tappi.SetActive(false);
-                Time.timeScale = 1f;
+                starttouchs();
             }
-            else if(Input.GetMouseButtonDown(0))
+        }
+            if(Input.GetMouseButtonDown(0))
             {
                 Tappi.SetActive(false);
                 Time.timeScale = 1f;
             }
         }
+    }
+    private void starttouchs()
+    {
+        Tappi.SetActive(false);
+        Time.timeScale = 1f;
     }
     public void restart(){
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -38,5 +47,8 @@ public class startt : MonoBehaviour
     public void startgame(){
         MainMenu.SetActive(false);
         chk = true;
+    }
+    public void credits(){
+        SceneManager.LoadScene("credits");
     }
 }
