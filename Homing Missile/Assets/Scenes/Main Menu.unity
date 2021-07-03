@@ -1027,7 +1027,6 @@ GameObject:
   - component: {fileID: 326233652}
   - component: {fileID: 326233654}
   - component: {fileID: 326233653}
-  - component: {fileID: 326233655}
   m_Layer: 5
   m_Name: ScoreMenu
   m_TagString: Untagged
@@ -1095,19 +1094,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 326233651}
   m_CullTransparentMesh: 0
---- !u!114 &326233655
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 326233651}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b5071a2cbdba8744a268fe8902fcc3b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoretext: {fileID: 0}
 --- !u!1 &344635402
 GameObject:
   m_ObjectHideFlags: 0
@@ -1528,13 +1514,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 500337208}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d19a1848c03533a4c9a1c1fc27fcc351, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MainMenu: {fileID: 0}
-  Tappi: {fileID: 0}
+  MainMenu: {fileID: 625862413}
+  Tappi: {fileID: 500337208}
 --- !u!114 &500337211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4276,7 +4262,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1712496950}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.64, y: 2.84, z: -2.37}
+  m_LocalPosition: {x: -5.14, y: 2.84, z: -2.37}
   m_LocalScale: {x: 0.19621985, y: 0.32040596, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
